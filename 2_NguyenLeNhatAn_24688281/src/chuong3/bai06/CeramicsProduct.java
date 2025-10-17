@@ -1,7 +1,9 @@
 package chuong3.bai06;
 
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 
 public class CeramicsProduct extends Product{
 
@@ -39,16 +41,24 @@ public class CeramicsProduct extends Product{
 	}
 	
 	@Override
-	public double calcPrice() {
-		return unitPrice * quantity * 0.1;
+	public double getVAT() {
+		return 0.1;
+	}
+	
+	@Override
+	protected ProductRating pr() {
+		return(quantity > 50 && ChronoUnit.DAYS.between(dateStart, LocalDate.now()) > 10)? ProductRating.BAN_CHAM : ProductRating.KHONG_DANH_GIA;
 	}
 	
 	@Override
 	public String toString() {
+		DecimalFormat df = new DecimalFormat("0.0#%");
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-		return super.toString() + String.format("%-13s | %-18s |",
+		return super.toString() + String.format("%-13s | %-18s | %-8s | %-5s |",
 				supplier,
-				dtf.format(dateStart)
+				dtf.format(dateStart),
+				pr(),
+				df.format(getVAT())
 		);
 	}
 }

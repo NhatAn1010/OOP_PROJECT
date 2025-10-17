@@ -8,8 +8,9 @@ public abstract class Product {
 	protected String name;
 	protected double unitPrice;
 	protected int quantity;
+	protected abstract ProductRating pr();
 	
-	
+	public abstract double getVAT();
 	public Product(String name) {
 		this.name = "xxx";
 	}
@@ -70,9 +71,6 @@ public abstract class Product {
 		return quantity;
 	}
 	
-
-	
-	public abstract double calcPrice();
 
 	@Override
 	public String toString() {

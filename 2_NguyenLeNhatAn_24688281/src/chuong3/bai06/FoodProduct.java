@@ -1,5 +1,6 @@
 package chuong3.bai06;
 
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -47,23 +48,31 @@ public class FoodProduct extends Product{
 	}
 
 	public void setDateEnd(LocalDate dateEnd) {
-		if(date.isBefore(date))
+		if(dateEnd.isBefore(date))
 			dateEnd = date;
 		this.dateEnd = dateEnd;
+	}
+	@Override
+	public double getVAT() {
+		return 0.05;
+	}
+	
+	@Override
+	public ProductRating pr() {
+		return(quantity > 0 && dateEnd.isBefore(LocalDate.now()))? ProductRating.KHO_BAN : ProductRating.KHONG_DANH_GIA;
 	}
 	
 	@Override
 	public String toString() {
+		DecimalFormat df = new DecimalFormat("0.0#%");
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-		return super.toString() + String.format("%-13s | %-13s | %-12s |",
+		return super.toString() + String.format("%-13s | %-13s | %-12s | %-8s | %-4s |",
 				supplier,
 				dtf.format(date), 
-				dtf.format(dateEnd)
+				dtf.format(dateEnd),
+				pr(),
+				df.format(getVAT())
 		);
 	}
 
-	@Override
-	public double calcPrice() {
-		return unitPrice * quantity * 0.05;
-	}
 }

@@ -195,11 +195,12 @@ public class Test {
 				System.out.println("Hàng thực phẩm: ");
 				System.out.println();
 
-				System.out.printf("%s | %-22s | %-15s | %-18s | %s | %s | %s |", "Mã sản phẩm",
+				System.out.printf("%s | %-22s | %-15s | %-18s | %s | %s | %s | %s | %s |", "Mã sản phẩm",
 												"Tên sản phẩm", "Giá bán", "Số lượng trong kho", 
-												"Nhà cung cấp", "Ngày sản xuất" , "Ngày hết hạn");
+												"Nhà cung cấp", "Ngày sản xuất" , "Ngày hết hạn",
+												"Đánh giá","Thuế");
 				System.out.println();
-				System.out.println("-".repeat(123));
+				System.out.println("-".repeat(141));
 
 				for(Product p : list.getList())
 				{
@@ -211,11 +212,12 @@ public class Test {
 				System.out.println("Hàng điện tử: ");
 				System.out.println();
 
-				System.out.printf("%s | %-22s | %-15s | %-18s | %s | %s |", "Mã sản phẩm",
+				System.out.printf("%s | %-22s | %-15s | %-18s | %s | %s | %s | %-5s |", "Mã sản phẩm",
 												"Tên sản phẩm", "Giá bán", "Số lượng trong kho", 
-												"Thời gian bảo hành", "Công suất");
+												"Thời gian bảo hành", "Công suất",
+												"Đánh giá","Thuế");
 				System.out.println();
-				System.out.println("-".repeat(110));
+				System.out.println("-".repeat(129));
 
 				for(Product p : list.getList())
 				{
@@ -227,11 +229,12 @@ public class Test {
 				System.out.println("Hàng sành sứ: ");
 				System.out.println();
 				
-				System.out.printf("%s | %-22s | %-15s | %-18s | %s | %s |", "Mã sản phẩm",
+				System.out.printf("%s | %-22s | %-15s | %-18s | %s | %s | %s | %-5s |", "Mã sản phẩm",
 												"Tên sản phẩm", "Giá bán", "Số lượng trong kho", 
-												"Nhà sản xuất", "Thời gian nhập kho");
+												"Nhà sản xuất", "Thời gian nhập kho",
+												"Đánh giá","Thuế");
 				System.out.println();
-				System.out.println("-".repeat(113));
+				System.out.println("-".repeat(132));
 
 				for(Product p : list.getList())
 				{

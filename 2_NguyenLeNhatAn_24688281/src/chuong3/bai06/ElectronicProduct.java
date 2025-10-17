@@ -1,6 +1,6 @@
 package chuong3.bai06;
 
-
+import java.text.DecimalFormat;
 
 public class ElectronicProduct extends Product{
 	//thời gian bảo hành
@@ -44,17 +44,25 @@ public class ElectronicProduct extends Product{
 	
 	@Override
 	public String toString() {
-		return super.toString() + String.format("%-19d | %-9.2f |",
+		DecimalFormat df = new DecimalFormat("0.0#%");
+		return super.toString() + String.format("%-19d | %-9.2f | %-8s | %-5s |",
 				warrantyPeriod,
-				adapter
+				adapter,
+				pr(),
+				df.format(getVAT())
 		);
 	}
 
 
 
 	@Override
-	public double calcPrice() {
-		return unitPrice * quantity * 0.1;
+	public double getVAT() {
+		return 0.1;
+	}
+	
+	@Override
+	protected ProductRating pr() {
+		return(quantity < 3)? ProductRating.BAN_DUOC : ProductRating.KHONG_DANH_GIA;
 	}
 	
 }
